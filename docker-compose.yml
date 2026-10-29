@@ -1,32 +1,32 @@
 services:
-    organizr:
-        container_name: organizr-swarm
-        hostname: organizr
-        image: organizr/organizr:latest
-        volumes:
-            - /var/lib/docker/volumes/organizr-swarm/config:/config
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=America/Chicago
-        ports:
-          - target: 80
-            published: 88
-            protocol: tcp
-            mode: host        
-        deploy:
-          mode: replicated
-          replicas: 3
-          resources:
-            limits:
-              cpus: '1.00'
-              memory: 1024M
-            reservations:
-              cpus: '0.50'
-              memory: 512M
-          placement:
-            constraints:
-              - node.labels.deployment.target.organizr == true
-          restart_policy:
-            condition: any
-        
+  organizr:
+    container_name: organizr-swarm
+    hostname: organizr
+    image: organizr/organizr:latest
+    volumes:
+    - /var/lib/docker/volumes/organizr-swarm/config:/config
+    environment:
+    - PUID=1000
+    - PGID=1000
+    - TZ=America/Chicago
+    ports:
+    - target: 80
+      published: 88
+      protocol: tcp
+      mode: host
+    deploy:
+      mode: replicated
+      replicas: 3
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 1024M
+        reservations:
+          cpus: '0.50'
+          memory: 512M
+      placement:
+        constraints:
+        - node.labels.deployment.target.organizr == true
+      restart_policy:
+        condition: any
+volumes: {}
