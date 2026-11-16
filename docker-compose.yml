@@ -2,7 +2,7 @@ services:
   organizr:
     container_name: organizr-swarm
     hostname: organizr
-    image: organizr/organizr:latest
+    image: organizr/organizr:latest@sha256:703de7b15e3ca0046c9bcfee03c72539f74acc5e26929f2911aa1af2be8ebb01
     volumes:
     - /var/lib/docker/volumes/organizr-swarm/config:/config
     environment:
